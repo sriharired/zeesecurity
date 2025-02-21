@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zee Security Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A5F7A",
+              secondary: "#86C8BC",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+      }
+      .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      }
+      .animate-float {
+      animation: float 3s ease-in-out infinite;
+      }
+      .service-card {
+      transition: all 0.3s ease;
+      }
+      .service-card:hover {
+      transform: scale(1.03) translateY(-5px);
+      }
+    </style>
+  </head>
+  <body class="bg-[#F1F6F9]">
+     <nav class="bg-white shadow-lg fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      
+      <!-- Logo -->
+      <div class="flex items-center">
+        <span class="text-2xl font-['Pacifico'] text-primary">Zee Security</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-primary">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-primary">About Us</a>
+        <a href="#services" class="text-gray-700 hover:text-primary">Services</a>
+        <a href="#service-areas" class="text-gray-700 hover:text-primary">Service Areas</a>
+        <button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">
+          Contact Us
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" 
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+    <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a>
+    <a href="#services" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Services</a>
+    <a href="#service-areas" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Service Areas</a>
+    <a href="contact.html" class="block px-4 py-2 text-white bg-primary hover:bg-opacity-90 text-center">
+      Contact Us
+    </a>
+  </div>
+</nav>
+    <section
+      class="pt-24 pb-16 relative overflow-hidden"
+      style="background-image: url('https://public.readdy.ai/ai/img_res/4b66491879bf4a3ac4953f1f2f0a2735.jpg'); background-size: cover;"
+    >
+      <div class="absolute inset-0 bg-primary bg-opacity-90"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="animate-fade-in">
+            <h1 class="text-5xl font-bold text-white mb-6">
+              Safeguarding Your Future with Advanced Security Solutions
+            </h1>
+            <p class="text-xl text-gray-100 mb-8">
+              Protecting what matters most with innovative technology and expert
+              personnel. Your security is our priority.
+            </p>
+            <div class="flex space-x-4">
+
+              <button
+                class="border-2 border-white text-white px-8 py-3 !rounded-button hover:bg-white hover:text-primary transition-all font-semibold whitespace-nowrap"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+          <div class="animate-float hidden lg:block">
+            <img
+              src="https://public.readdy.ai/ai/img_res/9352d7a023a5dd8235d6c0f48a93bdf2.jpg"
+              alt="Security Professional"
+              class="rounded-lg shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="mission" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-fade-in">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Mission</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            To safeguard lives, assets, and businesses through innovative,
+            reliable, and customized security solutions.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="service-card bg-white p-6 rounded-lg shadow-lg">
+            <div
+              class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-shield-check-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Professional Security</h3>
+            <p class="text-gray-600">
+              Expert security personnel trained to handle any situation with
+              precision and care.
+            </p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-lg shadow-lg">
+            <div
+              class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-computer-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Advanced Technology</h3>
+            <p class="text-gray-600">
+              State-of-the-art security systems and surveillance technology.
+            </p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-lg shadow-lg">
+            <div
+              class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-customer-service-2-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+            <p class="text-gray-600">
+              Round-the-clock monitoring and rapid response to security
+              concerns.
+            </p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-lg shadow-lg">
+            <div
+              class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-settings-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Custom Solutions</h3>
+            <p class="text-gray-600">
+              Tailored security strategies to meet your specific needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="services"
+      class="py-16 bg-gradient-to-b from-[#F1F6F9] to-white"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Who We Serve</h2>
+          <p class="text-xl text-gray-600">
+            Comprehensive security solutions across multiple sectors
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="service-card bg-white p-8 rounded-lg shadow-lg">
+            <div
+              class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="ri-building-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Corporate Security</h3>
+            <p class="text-gray-600">
+              Comprehensive protection for office buildings and business centers
+              with advanced access control systems.
+            </p>
+          </div>
+          <div class="service-card bg-white p-8 rounded-lg shadow-lg">
+            <div
+              class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="ri-home-4-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Residential Security</h3>
+            <p class="text-gray-600">
+              24/7 surveillance and security services for residential
+              communities and private estates.
+            </p>
+          </div>
+          <div class="service-card bg-white p-8 rounded-lg shadow-lg">
+            <div
+              class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="ri-store-2-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Retail Security</h3>
+            <p class="text-gray-600">
+              Specialized loss prevention and security solutions for retail
+              environments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="values" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+          <p class="text-xl text-gray-600">
+            The principles that guide our service excellence
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="service-card bg-white p-8 rounded-lg shadow-lg border border-gray-100"
+          >
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-shield-star-line text-primary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Integrity</h3>
+                <p class="text-gray-600">
+                  We maintain the highest ethical standards in all our
+                  operations, ensuring trust and reliability in every service we
+                  provide.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="service-card bg-white p-8 rounded-lg shadow-lg border border-gray-100"
+          >
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-customer-service-line text-primary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Customer Focus</h3>
+                <p class="text-gray-600">
+                  Your security needs are our priority. We develop customized
+                  solutions that address your specific requirements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-primary text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold mb-8">
+            Ready to Enhance Your Security?
+          </h2>
+          <button
+            class="bg-white text-primary px-8 py-3 !rounded-button hover:bg-opacity-90 transition-all font-semibold whitespace-nowrap"
+          >
+            Contact Us Today
+          </button>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <span class="text-2xl font-['Pacifico'] mb-4 block">Zee Security</span>
+            <p class="text-gray-400">
+              Protecting what matters most with innovative security solutions.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Corporate Security</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Residential Security</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Event Security</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Company</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Careers</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Connect</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-facebook-fill"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-twitter-fill"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-linkedin-fill"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Zee Security Solutions. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+      <script>
+  document.getElementById("menu-toggle").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
+  </body>
+</html>

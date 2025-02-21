@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zee Security Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A5F7A",
+              secondary: "#86C8BC",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+      }
+      @keyframes fadeInUp {
+      from {
+      opacity: 0;
+      transform: translateY(20px);
+      }
+      to {
+      opacity: 1;
+      transform: translateY(0);
+      }
+      }
+      .animate-float { animation: float 3s ease-in-out infinite; }
+      .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
+      .service-card {
+      transition: transform 0.3s ease;
+      }
+      .service-card:hover {
+      transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+     <nav class="bg-white shadow-lg fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      
+      <!-- Logo -->
+      <div class="flex items-center">
+        <span class="text-2xl font-['Pacifico'] text-primary">Zee Security</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-primary">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-primary">About Us</a>
+        <a href="#services" class="text-gray-700 hover:text-primary">Services</a>
+        <a href="#service-areas" class="text-gray-700 hover:text-primary">Service Areas</a>
+        <button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">
+          Contact Us
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" 
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+    <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a>
+    <a href="#services" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Services</a>
+    <a href="#service-areas" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Service Areas</a>
+    <a href="contact.html" class="block px-4 py-2 text-white bg-primary hover:bg-opacity-90 text-center">
+      Contact Us
+    </a>
+  </div>
+</nav>
+    <main>
+      <section
+        class="relative min-h-[800px] flex items-center"
+        style="background-image: url('https://public.readdy.ai/ai/img_res/87ea6906b9c366967d26da4c7aa47d60.jpg'); background-size: cover; background-position: center;"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent"
+        ></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div class="max-w-2xl animate-fadeInUp">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6">
+              Your Safety, Our Commitment
+            </h1>
+            <p class="text-xl text-gray-700 mb-8">
+              Professional security solutions tailored to protect what matters
+              most to you. 24/7 vigilance with cutting-edge technology and
+              highly trained personnel.
+            </p>
+            <button
+              class="bg-primary text-white px-8 py-4 !rounded-button text-lg hover:bg-primary/90 transition-colors whitespace-nowrap"
+            >
+              Get Started Today
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16 animate-fadeInUp">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              Our Security Services
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+              Comprehensive security solutions designed to meet your specific
+              needs with the highest standards of professionalism and
+              reliability.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card bg-white p-8 rounded-lg shadow-sm">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+              >
+                <i class="ri-shield-check-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                Manned Guarding
+              </h3>
+              <p class="text-gray-600">
+                Professional security officers trained to protect your premises
+                24/7 with the highest level of vigilance and expertise.
+              </p>
+            </div>
+            <div class="service-card bg-white p-8 rounded-lg shadow-sm">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+              >
+                <i class="ri-car-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                Mobile Patrol
+              </h3>
+              <p class="text-gray-600">
+                Regular patrol services ensuring comprehensive security coverage
+                across multiple locations with rapid response capabilities.
+              </p>
+            </div>
+            <div class="service-card bg-white p-8 rounded-lg shadow-sm">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+              >
+                <i class="ri-building-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                Construction Security
+              </h3>
+              <p class="text-gray-600">
+                Specialized security solutions for construction sites,
+                protecting valuable equipment and ensuring site safety.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Service Areas</h2>
+            <p class="text-lg text-gray-600">
+              Providing professional security services across major cities and
+              regions
+            </p>
+          </div>
+          <div class="relative h-[600px] rounded-xl overflow-hidden">
+            <div
+              class="absolute inset-0"
+              style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;"
+            ></div>
+            <div class="absolute inset-0 bg-black/5"></div>
+            <div
+              class="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-sm"
+            >
+              <h3 class="font-semibold text-gray-900 mb-2">Coverage Areas</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>Cambridge</li>
+                <li>Peterborough</li>
+                <li>Luton</li>
+                <li>Milton Keynes</li>
+                <li>Bedford</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
+            <p class="text-lg text-gray-600">
+              Experience the difference with our professional security services
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+              >
+                <i class="ri-24-hours-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                24/7 Support
+              </h3>
+              <p class="text-gray-600">
+                Round-the-clock availability ensures your security needs are met
+                at any time.
+              </p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+              >
+                <i class="ri-file-list-3-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                Customized Plans
+              </h3>
+              <p class="text-gray-600">
+                Tailored security solutions designed to meet your specific
+                requirements and challenges.
+              </p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+              >
+                <i class="ri-team-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                Expert Team
+              </h3>
+              <p class="text-gray-600">
+                Highly trained and experienced security personnel dedicated to
+                your protection.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <span class="text-2xl font-['Pacifico'] mb-4 block">Zee Security</span>
+            <p class="text-gray-400">
+              Protecting what matters most with innovative security solutions.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Corporate Security</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Residential Security</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Event Security</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Company</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Careers</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Connect</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-facebook-fill"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-twitter-fill"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-linkedin-fill"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Zee Security Solutions. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("animate-fadeInUp");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          },
+        );
+        document.querySelectorAll(".service-card").forEach((card) => {
+          observer.observe(card);
+        });
+      });
+    </script>
+      <script>
+  document.getElementById("menu-toggle").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
+  </body>
+</html>
