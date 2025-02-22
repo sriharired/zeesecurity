@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Zee Securities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A5F7A",
+              secondary: "#86C8BC",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      .location-marker {
+      cursor: pointer;
+      transition: all 0.3s;
+      }
+      .location-marker:hover {
+      transform: scale(1.2);
+      }
+      .service-card {
+      transition: all 0.3s;
+      }
+      .service-card:hover {
+      transform: translateY(-5px);
+      }
+      @media (max-width: 768px) {
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        .service-card:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white font-['Inter']">
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+      <nav class="bg-white shadow-lg fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      
+      <!-- Logo with Image -->
+      <div class="flex items-center space-x-3">
+        <img src="logo.PNG" alt="Zee Securities Logo" class="h-10 w-auto"> 
+        <span class="text-2xl font-['Poppins'] text-primary">ZEE SECURITIES</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-primary">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-primary">About Us</a>
+        <a href="services.html" class="text-gray-700 hover:text-primary">Services</a>
+        <a href="our-locations.html" class="text-gray-700 hover:text-primary">Service Areas</a>
+        <a href="contact.html" class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">
+          Contact Us
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" 
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+    <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a>
+    <a href="services.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Services</a>
+    <a href="our-locations.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Service Areas</a>
+    <a href="contact.html" class="block px-4 py-2 text-white bg-primary hover:bg-opacity-90 text-center">
+      Contact Us
+    </a>
+  </div>
+</nav>
+    </header>
+    <main>
+      <section
+        class="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5"
+      >
+        <div class="container mx-auto px-6 py-20">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0"
+          >
+            <div class="w-full md:w-1/2 md:pr-12">
+              <h1 class="text-4xl md:text-6xl font-bold text-primary mb-6">
+                Global Security Solutions
+              </h1>
+              <p class="text-xl md:text-2xl text-gray-600 mb-8">
+                Protecting What Matters Most Across Borders
+              </p>
+              <p class="text-base md:text-lg text-gray-600 mb-8">
+                Delivering top-tier security solutions with 24/7 protection and
+                advanced surveillance systems across multiple locations
+                worldwide.
+              </p>
+              <button
+                class="w-full md:w-auto !rounded-button bg-primary text-white px-8 py-4 text-lg hover:bg-primary/90 transition-colors"
+              >
+                Learn More
+              </button>
+            </div>
+            <div class="w-full md:w-1/2 mt-8 md:mt-0">
+              <img
+                src="https://public.readdy.ai/ai/img_res/6ce1c728d2e2d52a24f7159a605e5e42.jpg"
+                alt="Security Team"
+                class="w-full rounded-2xl shadow-2xl object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="locations" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center text-primary mb-16">
+            Our Global Presence
+          </h2>
+          <div class="relative h-[600px] rounded-2xl overflow-hidden shadow-lg">
+            <div
+              id="map"
+              class="w-full h-full"
+              style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-position: center; background-size: cover;"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="locations-grid"
+        class="py-20 bg-gradient-to-br from-primary/5 to-secondary/5"
+      >
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center text-primary mb-16">
+            Service Locations
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl p-8 shadow-lg service-card">
+              <h3 class="text-2xl font-bold text-primary mb-6">
+                United States
+              </h3>
+              <ul class="space-y-4">
+                <li class="flex items-start space-x-3">
+                  <i class="ri-map-pin-line text-primary mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold">San Francisco Bay Area</h4>
+                    <p class="text-gray-600">Corporate & Tech Security</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i class="ri-map-pin-line text-primary mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold">Los Angeles</h4>
+                    <p class="text-gray-600">Entertainment & VIP Protection</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i class="ri-map-pin-line text-primary mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold">Dallas</h4>
+                    <p class="text-gray-600">Retail & Commercial Security</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-lg service-card">
+              <h3 class="text-2xl font-bold text-primary mb-6">Canada</h3>
+              <ul class="space-y-4">
+                <li class="flex items-start space-x-3">
+                  <i class="ri-map-pin-line text-primary mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold">Toronto</h4>
+                    <p class="text-gray-600">Corporate & Residential</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i class="ri-map-pin-line text-primary mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold">Vancouver</h4>
+                    <p class="text-gray-600">Port & Industrial Security</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-lg service-card">
+              <h3 class="text-2xl font-bold text-primary mb-6">Middle East</h3>
+              <ul class="space-y-4">
+                <li class="flex items-start space-x-3">
+                  <i class="ri-map-pin-line text-primary mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold">Dubai, UAE</h4>
+                    <p class="text-gray-600">Luxury & Commercial</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i class="ri-map-pin-line text-primary mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold">Doha, Qatar</h4>
+                    <p class="text-gray-600">Government & VIP</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i class="ri-map-pin-line text-primary mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold">Riyadh, KSA</h4>
+                    <p class="text-gray-600">Corporate & Event Security</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center text-primary mb-16">
+            Service Highlights
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+              class="p-8 bg-white rounded-2xl shadow-lg text-center service-card"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center"
+              >
+                <i class="ri-shield-check-line text-3xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-4">
+                24/7 Protection
+              </h3>
+              <p class="text-gray-600">
+                Round-the-clock security monitoring and response
+              </p>
+            </div>
+            <div
+              class="p-8 bg-white rounded-2xl shadow-lg text-center service-card"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center"
+              >
+                <i class="ri-cctv-line text-3xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-4">
+                Advanced Surveillance
+              </h3>
+              <p class="text-gray-600">State-of-the-art monitoring systems</p>
+            </div>
+            <div
+              class="p-8 bg-white rounded-2xl shadow-lg text-center service-card"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center"
+              >
+                <i class="ri-run-line text-3xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-4">
+                Rapid Response
+              </h3>
+              <p class="text-gray-600">Swift action when seconds matter</p>
+            </div>
+            <div
+              class="p-8 bg-white rounded-2xl shadow-lg text-center service-card"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center"
+              >
+                <i class="ri-user-star-line text-3xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-4">
+                VIP Protection
+              </h3>
+              <p class="text-gray-600">
+                Elite security for high-profile clients
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <span class="text-2xl font-['Poppins'] mb-4 block">ZEE SECURITIES</span>
+            <p class="text-gray-400">
+              Protecting what matters most with innovative security solutions.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="services.html" class="text-gray-400 hover:text-white"
+                  >Corporate Security</a
+                >
+              </li>
+              <li>
+                <a href="services.html" class="text-gray-400 hover:text-white"
+                  >Residential Security</a
+                >
+              </li>
+              <li>
+                <a href="services.html" class="text-gray-400 hover:text-white"
+                  >Event Security</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Company</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="about.html" class="text-gray-400 hover:text-white">About Us</a>
+              </li>
+              <li>
+                <a href="our-locations.html" class="text-gray-400 hover:text-white">Our Locations</a>
+              </li>
+              <li>
+                <a href="contact.html" class="text-gray-400 hover:text-white">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Connect</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-facebook-fill"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-twitter-fill"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-linkedin-fill"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Zee Security Solutions. All rights reserved.</p>
+          <p>Designed by <a href="#" class="text-white font-semibold hover:underline">PSR Innovex</a></p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const locations = [
+        { name: "San Francisco", left: "15%", top: "35%" },
+        { name: "Los Angeles", left: "16%", top: "38%" },
+        { name: "Dallas", left: "20%", top: "40%" },
+        { name: "Toronto", left: "23%", top: "35%" },
+        { name: "Vancouver", left: "14%", top: "32%" },
+        { name: "Dubai", left: "58%", top: "45%" },
+        { name: "Doha", left: "57%", top: "46%" },
+        { name: "Riyadh", left: "56%", top: "47%" },
+      ];
+      const mapContainer = document.getElementById("map");
+      locations.forEach((location) => {
+        const marker = document.createElement("div");
+        marker.className =
+          "location-marker absolute w-4 h-4 bg-primary rounded-full shadow-lg cursor-pointer transform hover:scale-125 transition-transform";
+        marker.style.left = location.left;
+        marker.style.top = location.top;
+        const tooltip = document.createElement("div");
+        tooltip.className =
+          "absolute hidden bg-white px-3 py-2 rounded shadow-lg text-sm -translate-x-1/2 -translate-y-full mb-2";
+        tooltip.style.left = "50%";
+        tooltip.style.bottom = "100%";
+        tooltip.textContent = location.name;
+        marker.addEventListener("mouseenter", () => {
+          tooltip.classList.remove("hidden");
+        });
+        marker.addEventListener("mouseleave", () => {
+          tooltip.classList.add("hidden");
+        });
+        marker.appendChild(tooltip);
+        mapContainer.appendChild(marker);
+      });
+    </script>
+            <script>
+  document.getElementById("menu-toggle").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
+  </body>
+</html>

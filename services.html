@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zee Securities - Professional Security Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A5F7A",
+              secondary: "#86C8BC",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      .service-card {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.6s ease-out;
+      }
+      .service-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+      }
+      .consultation-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      }
+      .consultation-modal.active {
+      display: flex;
+      }
+    </style>
+  </head>
+  <body class="font-['Inter'] bg-white">
+<nav class="bg-white shadow-lg fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      
+      <!-- Logo with Image -->
+      <div class="flex items-center space-x-3">
+        <img src="logo.PNG" alt="Zee Securities Logo" class="h-10 w-auto"> 
+        <span class="text-2xl font-['Poppins'] text-primary">ZEE SECURITIES</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-primary">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-primary">About Us</a>
+        <a href="services.html" class="text-gray-700 hover:text-primary">Services</a>
+        <a href="our-locations.html" class="text-gray-700 hover:text-primary">Service Areas</a>
+        <a href="contact.html" class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">
+          Contact Us
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" 
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+    <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a>
+    <a href="services.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Services</a>
+    <a href="our-locations.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Service Areas</a>
+    <a href="contact.html" class="block px-4 py-2 text-white bg-primary hover:bg-opacity-90 text-center">
+      Contact Us
+    </a>
+  </div>
+</nav>
+    <section
+      class="relative min-h-screen flex items-center pt-16"
+      style="background-image: url('https://public.readdy.ai/ai/img_res/8dee0ff9a30918fd1b703131704683de.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-2xl">
+          <h1 class="text-5xl font-bold text-white mb-6 drop-shadow-lg">
+            Comprehensive Security Solutions
+          </h1>
+          <p class="text-xl text-white mb-8 drop-shadow-lg font-medium">
+            Protecting what matters most with advanced security strategies,
+            real-time monitoring, and rapid response teams.
+          </p>
+          <button
+            onclick="showConsultationModal()"
+            class="bg-white text-primary px-8 py-3 !rounded-button hover:bg-gray-100 transition-colors font-medium whitespace-nowrap"
+          >
+            Get Free Consultation
+          </button>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <i class="ri-arrow-down-line text-white ri-2x"></i>
+      </div>
+    </section>
+    <section id="services" class="py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Our Security Services
+          </h2>
+          <p class="text-xl text-gray-600">
+            Comprehensive protection tailored to your unique needs
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+        >
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-user-smile-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">
+              Concierge & Front-End Ambassadors
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Professional first point of contact ensuring security with a
+              welcoming approach
+            </p>
+            <button
+              onclick="showServiceModal('Concierge & Front-End Ambassadors')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-shield-check-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">
+              Armed & Unarmed Guard Services
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Highly trained security personnel providing comprehensive
+              protection
+            </p>
+            <button
+              onclick="showServiceModal('Armed & Unarmed Guard Services')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-building-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Commercial Security</h3>
+            <p class="text-gray-600 mb-4">
+              Customized security solutions for businesses of all sizes
+            </p>
+            <button
+              onclick="showServiceModal('Commercial Security')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-hard-hat-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Construction Security</h3>
+            <p class="text-gray-600 mb-4">
+              Specialized protection for construction sites and new developments
+            </p>
+            <button
+              onclick="showServiceModal('Construction Security')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-team-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Event Security</h3>
+            <p class="text-gray-600 mb-4">
+              Professional crowd management and event protection services
+            </p>
+            <button
+              onclick="showServiceModal('Event Security')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-fire-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Fire Watch Services</h3>
+            <p class="text-gray-600 mb-4">
+              24/7 fire hazard monitoring and emergency response
+            </p>
+            <button
+              onclick="showServiceModal('Fire Watch Services')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-shield-star-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Executive Protection</h3>
+            <p class="text-gray-600 mb-4">
+              Elite security services for high-profile individuals
+            </p>
+            <button
+              onclick="showServiceModal('Executive Protection')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-police-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Off-Duty Police Officers</h3>
+            <p class="text-gray-600 mb-4">
+              Enhanced security with trained law enforcement professionals
+            </p>
+            <button
+              onclick="showServiceModal('Off-Duty Police Officers')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-home-smile-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Residential Security</h3>
+            <p class="text-gray-600 mb-4">
+              Comprehensive protection for homes and residential communities
+            </p>
+            <button
+              onclick="showServiceModal('Residential Security')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-store-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Retail Loss Prevention</h3>
+            <p class="text-gray-600 mb-4">
+              Specialized security solutions for retail environments
+            </p>
+            <button
+              onclick="showServiceModal('Retail Loss Prevention')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-file-list-3-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Security Consulting</h3>
+            <p class="text-gray-600 mb-4">
+              Expert risk assessment and security protocol implementation
+            </p>
+            <button
+              onclick="showServiceModal('Security Consulting')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+          <div
+            class="service-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="ri-car-line text-primary ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Vehicle Patrol Services</h3>
+            <p class="text-gray-600 mb-4">
+              Mobile security monitoring and rapid response capabilities
+            </p>
+            <button
+              onclick="showServiceModal('Vehicle Patrol Services')"
+              class="text-primary hover:text-primary/80 font-medium flex items-center"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">
+              Why Choose Zee Securities?
+            </h2>
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <i class="ri-shield-check-line text-primary ri-lg"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-semibold mb-2">Expert Personnel</h3>
+                  <p class="text-gray-600">
+                    Our security professionals undergo rigorous training and
+                    certification to provide the highest level of protection.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <i class="ri-24-hours-line text-primary ri-lg"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-semibold mb-2">24/7 Availability</h3>
+                  <p class="text-gray-600">
+                    Round-the-clock security services with rapid response
+                    capabilities for any situation.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <i class="ri-settings-line text-primary ri-lg"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-semibold mb-2">
+                    Customized Solutions
+                  </h3>
+                  <p class="text-gray-600">
+                    Tailored security strategies designed to meet your specific
+                    needs and requirements.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              src="https://public.readdy.ai/ai/img_res/6ad5317822258b6fcd59ef001484b7c3.jpg"
+              alt="Security Team"
+              class="rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-primary text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">
+            Ready to Enhance Your Security?
+          </h2>
+          <p class="text-xl opacity-90">
+            Get in touch for a free consultation and personalized security
+            assessment
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div class="p-6">
+            <div
+              class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-phone-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Call Us</h3>
+            <p class="opacity-90">+1 (555) 123-4567</p>
+          </div>
+          <div class="p-6">
+            <div
+              class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-mail-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Email Us</h3>
+            <p class="opacity-90">contact@zeesecurities.com</p>
+          </div>
+          <div class="p-6">
+            <div
+              class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-map-pin-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Visit Us</h3>
+            <p class="opacity-90">
+              44801 Fremont Blvd<br />Fremont, CA 94538
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <span class="text-2xl font-['Poppins'] mb-4 block">ZEE SECURITIES</span>
+            <p class="text-gray-400">
+              Protecting what matters most with innovative security solutions.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="services.html" class="text-gray-400 hover:text-white"
+                  >Corporate Security</a
+                >
+              </li>
+              <li>
+                <a href="services.html" class="text-gray-400 hover:text-white"
+                  >Residential Security</a
+                >
+              </li>
+              <li>
+                <a href="services.html" class="text-gray-400 hover:text-white"
+                  >Event Security</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Company</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="about.html" class="text-gray-400 hover:text-white">About Us</a>
+              </li>
+              <li>
+                <a href="our-locations.html" class="text-gray-400 hover:text-white">Our Locations</a>
+              </li>
+              <li>
+                <a href="contact.html" class="text-gray-400 hover:text-white">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Connect</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-facebook-fill"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-twitter-fill"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="ri-linkedin-fill"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Zee Security Solutions. All rights reserved.</p>
+          <p>Designed by <a href="#" class="text-white font-semibold hover:underline">PSR Innovex</a></p>
+        </div>
+      </div>
+    </footer>
+      <!-- Service Details Modal -->
+<div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative">
+    <button onclick="closeServiceModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+      <i class="ri-close-line ri-lg"></i>
+    </button>
+    <h3 id="serviceTitle" class="text-2xl font-bold text-gray-900 mb-4"></h3>
+    <p id="serviceDescription" class="text-gray-600"></p>
+    <button onclick="closeServiceModal()" class="mt-4 bg-primary text-white px-4 py-2 rounded-md">
+      Close
+    </button>
+  </div>
+</div>
+    <div class="consultation-modal">
+      <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative">
+        <button
+          onclick="hideConsultationModal()"
+          class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+        >
+          <i class="ri-close-line ri-lg"></i>
+        </button>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+          Get Your Free Consultation
+        </h3>
+        <form id="consultationForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Full Name</label
+            >
+            <input
+              type="text"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Email</label
+            >
+            <input
+              type="email"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Phone</label
+            >
+            <input
+              type="tel"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Service Interest</label
+            >
+            <select
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+              required
+            >
+              <option value="">Select a service</option>
+              <option>Commercial Security</option>
+              <option>Residential Security</option>
+              <option>Event Security</option>
+              <option>Executive Protection</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Message</label
+            >
+            <textarea
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary h-24"
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors font-medium"
+          >
+            Submit Request
+          </button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function showConsultationModal() {
+        document.querySelector(".consultation-modal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+      function hideConsultationModal() {
+        document.querySelector(".consultation-modal").classList.remove("active");
+        document.body.style.overflow = "";
+      }
+      document
+        .getElementById("consultationForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          hideConsultationModal();
+          const successMessage = document.createElement("div");
+          successMessage.className =
+            "fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg";
+          successMessage.textContent = "Thank you! We will contact you soon.";
+          document.body.appendChild(successMessage);
+          setTimeout(() => {
+            successMessage.remove();
+          }, 3000);
+          this.reset();
+        });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        },
+      );
+      document.querySelectorAll(".service-card").forEach((card) => {
+        observer.observe(card);
+      });
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+          <script>
+  document.getElementById("menu-toggle").addEventListener("click", function() {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
+<script>
+  // Define service details
+  const serviceDetails = {
+    "Concierge & Front-End Ambassadors": "Our professional security personnel provide top-notch concierge and front-end services, ensuring a safe and welcoming environment.",
+    "Armed & Unarmed Guard Services": "Highly trained armed and unarmed security guards provide comprehensive protection for businesses, events, and VIP clients.",
+    "Commercial Security": "Tailored security solutions for corporate buildings, offices, and commercial establishments to prevent unauthorized access and enhance safety.",
+    "Construction Security": "Specialized protection for construction sites, preventing theft, vandalism, and unauthorized access.",
+    "Event Security": "Expert crowd control and security management for concerts, corporate events, private parties, and more.",
+    "Fire Watch Services": "24/7 fire hazard monitoring and emergency response services to prevent potential fire risks.",
+    "Executive Protection": "High-level security solutions for VIPs, executives, and high-profile individuals, ensuring safety and discretion.",
+    "Off-Duty Police Officers": "Certified law enforcement officers providing professional security with a strong presence and advanced training.",
+    "Residential Security": "Comprehensive security for residential buildings, gated communities, and private properties to ensure safety for residents.",
+    "Retail Loss Prevention": "Specialized security measures to reduce theft and enhance loss prevention strategies for retail businesses.",
+    "Security Consulting": "Expert risk assessment, security audits, and personalized security strategy planning for businesses and individuals.",
+    "Vehicle Patrol Services": "Mobile security patrols ensuring rapid response and surveillance for large premises and communities.",
+  };
+</script>
+<script>
+  function showServiceModal(serviceName) {
+    const modal = document.getElementById("serviceModal");
+    const title = document.getElementById("serviceTitle");
+    const description = document.getElementById("serviceDescription");
+
+    // Set modal title and description dynamically
+    title.textContent = serviceName;
+    description.textContent = serviceDetails[serviceName] || "More details about this service will be available soon.";
+
+    // Show modal
+    modal.classList.remove("hidden");
+  }
+
+  function closeServiceModal() {
+    document.getElementById("serviceModal").classList.add("hidden");
+  }
+</script>
+
+      
+
+  </body>
+</html>
