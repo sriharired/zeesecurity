@@ -15,9 +15,10 @@
       rel="stylesheet"
     />
     
+<!-- Include Mapbox GL CSS & JavaScript -->
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -70,26 +71,19 @@
       transform: scale(1.05);
       }
 
-      /* Full-Screen Responsive Map */
+       /* Full-Screen Responsive Map */
     #map {
         width: 100%;
         height: 600px;
         border-radius: 10px;
     }
 
-    /* Custom 3D Marker */
+    /* Custom Marker Style */
     .mapbox-marker {
-        background-image: url('https://cdn-icons-png.flaticon.com/512/684/684908.png'); /* Custom 3D Pin */
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ee/Map_pin_icon.svg'); /* Custom Pin */
         background-size: cover;
         width: 40px;
         height: 40px;
-        animation: bounce 1.5s infinite ease-in-out;
-    }
-
-    /* Bounce Animation for 3D Pins */
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
     }
     
     </style>
@@ -381,7 +375,7 @@
 
 <script>
     // Set your Mapbox Access Token
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3JpaDIxMDciLCJhIjoiY203amllbm5xMDR0OTJtb2kwbWYwZnQ1aCJ9.-qoLYooQTzaFfQPg1jwSnw';
+    mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
     // Initialize the Mapbox map
     var map = new mapboxgl.Map({
@@ -393,9 +387,8 @@
         bearing: 0
     });
 
-    // Service Locations (Ensuring Proper Placement)
+    // Service Locations (All locations as requested)
     var locations = [
-        // Bay Area Locations
         { name: "San Francisco", coords: [-122.4194, 37.7749] },
         { name: "San Mateo", coords: [-122.3255, 37.5630] },
         { name: "South San Francisco", coords: [-122.4077, 37.6547] },
@@ -418,8 +411,6 @@
         { name: "Concord", coords: [-122.0311, 37.9772] },
         { name: "San Ramon", coords: [-121.9780, 37.7799] },
         { name: "Santa Cruz", coords: [-122.0308, 36.9741] },
-        
-        // Out-of-Bay Area Locations
         { name: "Sacramento", coords: [-121.4944, 38.5816] },
         { name: "Fresno", coords: [-119.7871, 36.7378] },
         { name: "Modesto", coords: [-120.9969, 37.6391] },
