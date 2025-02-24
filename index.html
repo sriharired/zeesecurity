@@ -393,7 +393,7 @@
         bearing: 0
     });
 
-    // Service Locations (All locations as requested)
+    // Service Locations (Ensuring Proper Placement)
     var locations = [
         // Bay Area Locations
         { name: "San Francisco", coords: [-122.4194, 37.7749] },
@@ -437,7 +437,7 @@
         });
     }
 
-    // Add Pins to Each Location
+    // Ensure all markers are added correctly
     locations.forEach(location => {
         // Create a pin element
         var markerEl = document.createElement('div');
