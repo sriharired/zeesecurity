@@ -70,7 +70,7 @@
       transform: scale(1.05);
       }
 
-     /* Full-Screen Responsive Map */
+      /* Full-Screen Responsive Map */
     #map {
         width: 100%;
         height: 600px;
@@ -79,7 +79,7 @@
 
     /* Custom 3D Marker */
     .mapbox-marker {
-        background-image: url('https://cdn-icons-png.flaticon.com/512/684/684908.png'); /* 3D Pin Icon */
+        background-image: url('https://cdn-icons-png.flaticon.com/512/684/684908.png'); /* Custom 3D Pin */
         background-size: cover;
         width: 45px;
         height: 45px;
@@ -90,17 +90,6 @@
     @keyframes bounce {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-10px); }
-    }
-
-    /* Bold City Name Directly on Map */
-    .mapboxgl-popup-content {
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        color: black;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 5px 10px;
-        border-radius: 6px;
     }
       
     </style>
@@ -392,7 +381,7 @@
 
 <script>
     // Set your Mapbox Access Token
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3JpaDIxMDciLCJhIjoiY203amllbm5xMDR0OTJtb2kwbWYwZnQ1aCJ9.-qoLYooQTzaFfQPg1jwSnw';
+    mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
     // Initialize the Mapbox map
     var map = new mapboxgl.Map({
@@ -404,7 +393,7 @@
         bearing: 0
     });
 
-    // Service Locations
+    // Service Locations (Only Pins, No Text Labels)
     var locations = [
         { name: "San Francisco", coords: [-122.4194, 37.7749] },
         { name: "San Mateo", coords: [-122.3255, 37.5630] },
@@ -435,23 +424,17 @@
         { name: "Pittsburg", coords: [-121.8847, 38.0279] }
     ];
 
-    // Function to fly to a location and animate the marker
-    function flyToLocation(coords, name) {
+    // Function to fly to a location when a pin is clicked
+    function flyToLocation(coords) {
         map.flyTo({
             center: coords,
             zoom: 12,
             pitch: 60, // Adjusts the 3D view angle
             speed: 1.5 // Smooth transition speed
         });
-
-        // Show popup with bold city name
-        new mapboxgl.Popup()
-            .setLngLat(coords)
-            .setHTML(`<b>${name}</b>`)
-            .addTo(map);
     }
 
-    // Add animated 3D markers with bold names
+    // Add only animated pins (No Text Labels)
     locations.forEach(location => {
         // Create marker element
         var markerEl = document.createElement('div');
@@ -462,13 +445,7 @@
             .setLngLat(location.coords)
             .addTo(map)
             .getElement()
-            .addEventListener('click', () => flyToLocation(location.coords, location.name));
-
-        // Add bold text label directly on map
-        new mapboxgl.Popup({ closeOnClick: false })
-            .setLngLat(location.coords)
-            .setHTML(`<b>${location.name}</b>`)
-            .addTo(map);
+            .addEventListener('click', () => flyToLocation(location.coords));
     });
 </script>
     
