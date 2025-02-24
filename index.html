@@ -69,9 +69,8 @@
       .service-card:hover {
       transform: scale(1.05);
       }
-      
 
-          /* Full-Screen Responsive Map */
+       /* Full-Screen Responsive Map */
     #map {
         width: 100%;
         height: 600px;
@@ -387,12 +386,11 @@
     // Initialize the Mapbox map
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11', // Other styles: 'dark-v10', 'satellite-streets-v11'
-        center: [-122.4194, 37.7749], // Default to San Francisco
-        zoom: 8,
-        pitch: 45, // 3D View
-        bearing: 0,
-        fetchOptions: { credentials: 'same-origin' }
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-122.4194, 37.7749], // Centered on San Francisco
+        zoom: 9,
+        pitch: 45, // 3D Effect
+        bearing: 0
     });
 
     // Service Locations
