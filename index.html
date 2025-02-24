@@ -14,6 +14,8 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -192,29 +194,17 @@
     </div>
 </section>
 
-     <section class="py-24">
+<section class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
+        <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Service Areas</h2>
             <p class="text-lg text-gray-600">
-                Providing professional security services across major cities and regions.
+                Explore our security service areas in real-time.
             </p>
         </div>
-        <div class="relative h-[600px] md:h-[500px] rounded-xl overflow-hidden">
-            <div class="absolute inset-0 bg-cover bg-center" 
-                 style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');">
-            </div>
-            <div class="absolute inset-0 bg-black/40"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg w-80 text-center">
-                <h3 class="font-semibold text-gray-900 mb-3 text-lg">Coverage Areas</h3>
-                <ul class="space-y-2 text-gray-600">
-                    <li>Cambridge</li>
-                    <li>Peterborough</li>
-                    <li>Luton</li>
-                    <li>Milton Keynes</li>
-                    <li>Bedford</li>
-                </ul>
-            </div>
+        <div class="relative h-[500px] md:h-[600px] rounded-xl overflow-hidden">
+            <!-- Map Container -->
+            <div id="map" class="w-full h-full rounded-xl"></div>
         </div>
     </div>
 </section>
@@ -362,5 +352,33 @@
     document.getElementById("mobile-menu").classList.toggle("hidden");
   });
 </script>
+
+    <script>
+    // Initialize the map centered in the USA
+    var map = L.map('map').setView([37.0902, -95.7129], 4); // Default view (USA)
+
+    // Load tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Predefined service area locations
+    var locations = [
+        { name: "San Francisco", coords: [37.7749, -122.4194] },
+        { name: "Boston", coords: [42.3601, -71.0589] },
+        { name: "Cambridge", coords: [52.2053, 0.1218] },
+        { name: "Peterborough", coords: [52.5695, -0.2405] },
+        { name: "Luton", coords: [51.8787, -0.42] },
+        { name: "Milton Keynes", coords: [52.0386, -0.7594] },
+        { name: "Bedford", coords: [52.1357, -0.4663] }
+    ];
+
+    // Add markers for each service area
+    locations.forEach(location => {
+        L.marker(location.coords).addTo(map)
+            .bindPopup(`<b>${location.name}</b>`);
+    });
+</script>
+    
   </body>
 </html>
