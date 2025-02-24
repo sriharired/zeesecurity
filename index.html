@@ -14,7 +14,7 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-<!-- Include Mapbox GL CSS & JavaScript -->
+    
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
     
@@ -70,26 +70,35 @@
       transform: scale(1.05);
       }
 
-       /* Full-Screen Responsive Map */
+     /* Full-Screen Responsive Map */
     #map {
         width: 100%;
         height: 600px;
         border-radius: 10px;
     }
 
-    /* Animated marker */
+    /* Custom Marker Style */
     .mapbox-marker {
-        width: 40px;
-        height: 40px;
         background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ee/Map_pin_icon.svg');
         background-size: cover;
-        animation: bounce 1.5s infinite;
+        width: 40px;
+        height: 40px;
     }
 
-    /* Bounce animation */
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+    /* Name Labels Above Markers */
+    .marker-label {
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        background: white;
+        padding: 4px 6px;
+        border-radius: 4px;
+        position: absolute;
+        bottom: 45px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
     }
       
     </style>
@@ -381,7 +390,7 @@
 
 <script>
     // Set your Mapbox Access Token
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3JpaDIxMDciLCJhIjoiY203amllbm5xMDR0OTJtb2kwbWYwZnQ1aCJ9.-qoLYooQTzaFfQPg1jwSnw';
+    mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
     // Initialize the Mapbox map
     var map = new mapboxgl.Map({
@@ -440,14 +449,24 @@
             .addTo(map);
     }
 
-    // Add markers with animations
+    // Add markers with labels
     locations.forEach(location => {
-        // Create a marker element with animation
+        // Create marker element
         var markerEl = document.createElement('div');
         markerEl.className = 'mapbox-marker';
 
-        // Add marker to map
-        new mapboxgl.Marker(markerEl)
+        // Create label for marker
+        var label = document.createElement('div');
+        label.className = 'marker-label';
+        label.innerText = location.name;
+
+        // Wrap marker and label in a container
+        var markerContainer = document.createElement('div');
+        markerContainer.appendChild(label);
+        markerContainer.appendChild(markerEl);
+
+        // Add marker to the map
+        new mapboxgl.Marker(markerContainer)
             .setLngLat(location.coords)
             .addTo(map)
             .getElement()
