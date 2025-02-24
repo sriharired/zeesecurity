@@ -70,7 +70,7 @@
       transform: scale(1.05);
       }
 
-      /* Full-Screen Responsive Map */
+     /* Full-Screen Responsive Map */
     #map {
         width: 100%;
         height: 600px;
@@ -81,17 +81,17 @@
     .mapbox-marker {
         background-image: url('https://cdn-icons-png.flaticon.com/512/684/684908.png'); /* Custom 3D Pin */
         background-size: cover;
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         animation: bounce 1.5s infinite ease-in-out;
     }
 
-    /* Bounce Animation for 3D Pin */
+    /* Bounce Animation for 3D Pins */
     @keyframes bounce {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-10px); }
     }
-      
+    
     </style>
   </head>
   <body class="bg-white">
@@ -393,7 +393,7 @@
         bearing: 0
     });
 
-    // Service Locations (Only Pins, No Text Labels)
+    // Service Locations (All Pins Placed Correctly)
     var locations = [
         { name: "San Francisco", coords: [-122.4194, 37.7749] },
         { name: "San Mateo", coords: [-122.3255, 37.5630] },
@@ -434,13 +434,13 @@
         });
     }
 
-    // Add only animated pins (No Text Labels)
+    // Add Pins to Each Location
     locations.forEach(location => {
-        // Create marker element
+        // Create a pin element
         var markerEl = document.createElement('div');
         markerEl.className = 'mapbox-marker';
 
-        // Add marker to map
+        // Add pin to the map
         new mapboxgl.Marker(markerEl)
             .setLngLat(location.coords)
             .addTo(map)
