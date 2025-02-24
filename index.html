@@ -70,7 +70,7 @@
       transform: scale(1.05);
       }
 
-     /* Full-Screen Responsive Map */
+      /* Full-Screen Responsive Map */
     #map {
         width: 100%;
         height: 600px;
@@ -388,13 +388,14 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [-122.4194, 37.7749], // Centered on San Francisco
-        zoom: 9,
+        zoom: 8,
         pitch: 45, // 3D Effect
         bearing: 0
     });
 
-    // Service Locations (All Pins Placed Correctly)
+    // Service Locations (All locations as requested)
     var locations = [
+        // Bay Area Locations
         { name: "San Francisco", coords: [-122.4194, 37.7749] },
         { name: "San Mateo", coords: [-122.3255, 37.5630] },
         { name: "South San Francisco", coords: [-122.4077, 37.6547] },
@@ -417,6 +418,8 @@
         { name: "Concord", coords: [-122.0311, 37.9772] },
         { name: "San Ramon", coords: [-121.9780, 37.7799] },
         { name: "Santa Cruz", coords: [-122.0308, 36.9741] },
+        
+        // Out-of-Bay Area Locations
         { name: "Sacramento", coords: [-121.4944, 38.5816] },
         { name: "Fresno", coords: [-119.7871, 36.7378] },
         { name: "Modesto", coords: [-120.9969, 37.6391] },
