@@ -77,28 +77,30 @@
         border-radius: 10px;
     }
 
-    /* Custom Marker Style */
+    /* Custom 3D Marker */
     .mapbox-marker {
-        background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ee/Map_pin_icon.svg');
+        background-image: url('https://cdn-icons-png.flaticon.com/512/684/684908.png'); /* 3D Pin Icon */
         background-size: cover;
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
+        animation: bounce 1.5s infinite ease-in-out;
     }
 
-    /* Name Labels Above Markers */
-    .marker-label {
-        font-size: 14px;
+    /* Bounce Animation for 3D Pin */
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* Bold City Name Directly on Map */
+    .mapboxgl-popup-content {
+        font-size: 16px;
         font-weight: bold;
         text-align: center;
-        background: white;
-        padding: 4px 6px;
-        border-radius: 4px;
-        position: absolute;
-        bottom: 45px;
-        left: 50%;
-        transform: translateX(-50%);
-        white-space: nowrap;
-        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+        color: black;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 5px 10px;
+        border-radius: 6px;
     }
       
     </style>
@@ -442,35 +444,31 @@
             speed: 1.5 // Smooth transition speed
         });
 
-        // Show popup
+        // Show popup with bold city name
         new mapboxgl.Popup()
             .setLngLat(coords)
             .setHTML(`<b>${name}</b>`)
             .addTo(map);
     }
 
-    // Add markers with labels
+    // Add animated 3D markers with bold names
     locations.forEach(location => {
         // Create marker element
         var markerEl = document.createElement('div');
         markerEl.className = 'mapbox-marker';
 
-        // Create label for marker
-        var label = document.createElement('div');
-        label.className = 'marker-label';
-        label.innerText = location.name;
-
-        // Wrap marker and label in a container
-        var markerContainer = document.createElement('div');
-        markerContainer.appendChild(label);
-        markerContainer.appendChild(markerEl);
-
-        // Add marker to the map
-        new mapboxgl.Marker(markerContainer)
+        // Add marker to map
+        new mapboxgl.Marker(markerEl)
             .setLngLat(location.coords)
             .addTo(map)
             .getElement()
             .addEventListener('click', () => flyToLocation(location.coords, location.name));
+
+        // Add bold text label directly on map
+        new mapboxgl.Popup({ closeOnClick: false })
+            .setLngLat(location.coords)
+            .setHTML(`<b>${location.name}</b>`)
+            .addTo(map);
     });
 </script>
     
