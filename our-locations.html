@@ -70,6 +70,18 @@
           transform: none;
         }
       }
+
+       /* Custom Animation for Markers */
+    .leaflet-marker-icon {
+        animation: bounceIn 1s ease-in-out;
+    }
+
+    @keyframes bounceIn {
+        0% { transform: scale(0.5); opacity: 0; }
+        50% { transform: scale(1.2); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+      
     </style>
   </head>
   <body class="bg-white font-['Inter']">
