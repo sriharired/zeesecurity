@@ -440,5 +440,64 @@
     document.getElementById("mobile-menu").classList.toggle("hidden");
   });
 </script>
+
+    <script>
+    // Initialize the map centered on the Bay Area
+    var map = L.map('map').setView([37.7749, -122.4194], 8); // Default zoom level
+
+    // Load tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // List of Service Locations
+    var locations = [
+        { name: "San Francisco", coords: [37.7749, -122.4194] },
+        { name: "San Mateo", coords: [37.5630, -122.3255] },
+        { name: "South San Francisco", coords: [37.6547, -122.4077] },
+        { name: "Palo Alto", coords: [37.4419, -122.1430] },
+        { name: "Mountain View", coords: [37.3861, -122.0839] },
+        { name: "Sunnyvale", coords: [37.3688, -122.0363] },
+        { name: "San Jose", coords: [37.3382, -121.8863] },
+        { name: "Campbell", coords: [37.2872, -121.9499] },
+        { name: "Milpitas", coords: [37.4323, -121.8996] },
+        { name: "Fremont", coords: [37.5483, -121.9886] },
+        { name: "Hayward", coords: [37.6688, -122.0808] },
+        { name: "San Leandro", coords: [37.7249, -122.1561] },
+        { name: "Emeryville", coords: [37.8313, -122.2855] },
+        { name: "Berkeley", coords: [37.8716, -122.2727] },
+        { name: "Oakland", coords: [37.8044, -122.2711] },
+        { name: "Richmond", coords: [37.9358, -122.3477] },
+        { name: "Dublin", coords: [37.7022, -121.9358] },
+        { name: "Pleasanton", coords: [37.6624, -121.8747] },
+        { name: "Walnut Creek", coords: [37.9010, -122.0618] },
+        { name: "Concord", coords: [37.9772, -122.0311] },
+        { name: "San Ramon", coords: [37.7799, -121.9780] },
+        { name: "Santa Cruz", coords: [36.9741, -122.0308] },
+        // Out-of-Bay Area
+        { name: "Sacramento", coords: [38.5816, -121.4944] },
+        { name: "Fresno", coords: [36.7378, -119.7871] },
+        { name: "Modesto", coords: [37.6391, -120.9969] },
+        { name: "Antioch", coords: [38.0049, -121.8058] },
+        { name: "Pittsburg", coords: [38.0279, -121.8847] },
+        { name: "Concord", coords: [37.9772, -122.0311] }
+    ];
+
+    // Adding animated markers for each location
+    locations.forEach(location => {
+        var marker = L.marker(location.coords, { bounceOnAdd: true }).addTo(map)
+            .bindPopup(`<b>${location.name}</b>`);
+        
+        // Adding smooth popup effect
+        marker.on("click", function (e) {
+            this.openPopup();
+        });
+
+        // Bounce animation effect when marker is added
+        setTimeout(() => {
+            marker.setOpacity(1);
+        }, 500);
+    });
+</script>
   </body>
 </html>
